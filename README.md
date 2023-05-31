@@ -26,36 +26,43 @@ In this project, I aim to implement a data creation strategy for generating code
 We first evaluated the performance of the monolingual BeRT model on code-mixed data with varying code-mixing indices (CMI). The following graphs illustrate the train accuracy and test accuracy of the model as the CMI score increases:
 
 
-Train Accuracy vs CMI score |  Test Accuracy vs CMI score
+Train Accuracy vs epochs over various CMI |  Test Accuracy vs epochs over various CMI
 :-------------------------:|:-------------------------:
-!["Train Accuracy vs CMI score - Monolingual BeRT Model"](train_accuracy_monolingual.png "Train Accuracy vs CMI score - Monolingual BeRT Model")  |  !["Test Accuracy vs CMI score - Monolingual BeRT Model"](test_accuracy_monolingual.png "Test Accuracy vs CMI score - Monolingual BeRT Model")
+!["Train Accuracy vs epochs - Monolingual BeRT Model"](train_accuracy_monolingual.png "Train Accuracy vs epochs - Monolingual BeRT Model")  |  !["Test Accuracy vs epochs - Monolingual BeRT Model"](test_accuracy_monolingual.png "Test Accuracy vs epochs - Monolingual BeRT Model")
   
-From the graphs, we observe an interesting trend. As the CMI score increases, the train accuracy of the monolingual BeRT model decreases gradually. This indicates that the model faces challenges in accurately predicting the code-mixed sentences with higher language mixing.
+From the graphs, we can observe an interesting trend. As the CMI score increases, the train accuracy of the monolingual BeRT model increases gradually. This indicates that the model faces challenges in accurately predicting the code-mixed sentences with lower language mixing.
 
-Similarly, the test accuracy of the model also exhibits a decreasing trend as the CMI score increases. This implies that the performance of the monolingual BeRT model deteriorates when exposed to code-mixed data with higher language mixing.
+Similarly, the test accuracy of the model also exhibits mostly an increase trend as the CMI score increases. This implies that the performance of the monolingual BeRT model increases when exposed to code-mixed data with higher language mixing.
 
 ### Multilingual BeRT Model
 
 Next, we examined the performance of the multilingual BeRT model on the same code-mixed data with varying CMIs. The following graphs depict the train accuracy and test accuracy of the model across different CMI scores:
 
-Train Accuracy vs CMI score |  Test Accuracy vs CMI score
+Train Accuracy vs epochs over various CMI |  Test Accuracy vs epochs over various CMI
 :-------------------------:|:-------------------------:
-!["Train Accuracy vs CMI score - Multilingual BeRT Model"](train_accuracy_multilingual.png "Train Accuracy vs CMI score - Multilingual BeRT Model")  |  !["Test Accuracy vs CMI score - Multilingual BeRT Model"](test_accuracy_multilingual.png "Test Accuracy vs CMI score - Multilingual BeRT Model")
+!["Train Accuracy vs epochs - Multilingual BeRT Model"](train_accuracy_multilingual.png "Train Accuracy vs epochs - Multilingual BeRT Model")  |  !["Test Accuracy vs epochs - Multilingual BeRT Model"](test_accuracy_multilingual.png "Test Accuracy vs epochs - Multilingual BeRT Model")
 
-The graphs reveal intriguing insights. Unlike the monolingual BeRT model, the train accuracy of the multilingual BeRT model remains relatively stable across different CMI scores. This suggests that the model is more resilient to code-mixed sentences with varying degrees of language mixing.
+The graphs reveal intriguing insights. Unlike the monolingual BeRT model, the train accuracy of the multilingual BeRT model remains _relatively more_ stable across different CMI scores. This suggests that the model is more resilient to code-mixed sentences with varying degrees of language mixing.
 
-Similarly, the test accuracy of the multilingual BeRT model also remains relatively consistent as the CMI score increases. This indicates that the model can handle code-mixed data with higher language mixing more effectively compared to the monolingual BeRT model.
+Similarly, the test accuracy of the multilingual BeRT model also remains _relatively more_ consistent as the CMI score increases. This indicates that the model can handle code-mixed data with lower language mixing more effectively compared to the monolingual BeRT model.
 
 ## Discussion
+The following graphs shows the train accuracy of the two model across different CMI scores:
 
-The results obtained from the experiments with both the monolingual and multilingual BeRT models provide valuable insights into their performance on code-mixed data with varying CMIs. The monolingual BeRT model demonstrates a clear decline in train and test accuracy as the CMI score increases, indicating the model's difficulty in accurately classifying highly code-mixed sentences.
+BeRT (Monolingual English) |  m-BeRT (Multilingual)
+:-------------------------:|:-------------------------:
+!["Train Accuracy vs epochs - Monolingual BeRT Model"](train_accuracy_monolingual.png "Train Accuracy vs epochs - Monolingual BeRT Model")  |  !["Train Accuracy vs epochs - Multilingual BeRT Model"](train_accuracy_multilingual.png "Train Accuracy vs epochs - Multilingual BeRT Model")
 
-On the other hand, the multilingual BeRT model exhibits greater robustness and stability in its performance across different CMI scores. The train and test accuracies remain relatively consistent, implying that the multilingual model is more adaptable to code-mixed data with varying degrees of language mixing.
+The results obtained from the experiments with both the monolingual and multilingual BeRT models provide valuable insights into their performance on code-mixed data with varying CMIs. The monolingual BeRT model demonstrates a clear increase in train and test accuracy as the CMI score increases, indicating the model's difficulty in accurately classifying sentences with lower CMI score, i.e. having more Hindi words.
+
+On the other hand, the multilingual BeRT model exhibits greater robustness across different CMI scores. The train and test accuracies are not showing a direct behavior as they did in the case of monolingual model, implying that the multilingual model is more adaptable to code-mixed data with varying degrees of language mixing. However, there is still more ease in the recognition for the English words, it seems. Either way, we definitely see the increase in accuracies in the performance in the lower CMI score datasets. Also, we can see a huge improvement in the test acuracy in the lower CMI scores in the multilingual model. It can be because the model had more training experience in recognizing the Hindi words and, thus, it gave better results over the test datasets.
 
 These findings suggest that incorporating multilingual capabilities in language models can enhance their ability to handle code-mixed content effectively. By leveraging a wider linguistic context, the multilingual BeRT model demonstrates improved performance on code-mixed sentences compared to the monolingual BeRT model.
 
-These insights contribute to the understanding of the impact of language mixing on the performance of language models, particularly in the context of code-mixed content classification. Further research and experimentation can explore additional strategies for optimizing the performance of language models on code-mixed data and investigate the use of other multilingual models for similar tasks.
 
 ## Conclusion
 
-This project aims to address the challenge of categorizing code-mixed sentences using fine-tuned language models. By generating code-mixed data with varying code-mixing indices and fine-tuning BeRT and m-BeRT models, we can evaluate their performance on a standard code-mixed dataset. The project will provide insights into the impact of language mixing on model accuracy and compare the performance of different language models. The findings from this project can contribute to the development of more effective techniques for handling code-mixed content in machine learning applications, particularly in the context of social media content monitoring and abuse detection.
+This project aims to address the challenge of categorizing code-mixed sentences using fine-tuned language models. By generating code-mixed data with varying code-mixing indices and fine-tuning BeRT and m-BeRT models, we can evaluate their performance on a standard code-mixed dataset. The project provides insights into the impact of language mixing on model accuracy and compare the performance of different language models. The project also sheds light on the advantages of using a monolingual model and explore the potential enhancements that can be achieved by leveraging a multilingual language model in real-world applications. The findings from this project can contribute to the development of more effective techniques for handling code-mixed content in machine learning applications, particularly in the context of social media content monitoring and abuse detection.
+
+### Acknowledgement 
+Special thanks to [SAiDL](https://www.saidl.in/) for providing the problem statement.
